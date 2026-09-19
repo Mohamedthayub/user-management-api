@@ -1,6 +1,5 @@
 const userModel = require('../Models/User');
 
-//  CREATE USER 
 exports.createUser = async (req,res,next) => {
     try{
         const  user = await userModel.create(req.body);
@@ -14,8 +13,6 @@ exports.createUser = async (req,res,next) => {
         next(error);
     }
 }
-
-// GET SINGLE USER;
 exports.getUsers = async (req,res,next) => {
     try{
         const users =  await userModel.find();
@@ -37,7 +34,7 @@ exports.getUserById  = async (req,res,next) => {
         if(!user){
             return  res.status(404).json({
                 success:false,
-                message:"User not found"
+                message:"UserId is not found"
             });
         }
         res.status(200).json({
@@ -91,7 +88,7 @@ exports.deleteUser =  async (req,res,next) => {
     }
     res.status(200).json({
         success:true,
-        message:"User deleted Sucessfully"
+        message:"User deleted Successfully"
     });
    }
    catch(error){
