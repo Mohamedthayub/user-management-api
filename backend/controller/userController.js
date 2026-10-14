@@ -6,6 +6,7 @@ exports.createUser = async (req,res,next) => {
         
         res.status(201).json({
             success:true,
+            message:"User Created Successfully",
             user
         });
     }
@@ -15,13 +16,13 @@ exports.createUser = async (req,res,next) => {
 }
 exports.getUsers = async (req,res,next) => {
     try{
-        const users =  await userModel.find();
-        
+        const {name} = req.query;
+        const users =  await userModel.find({name});        
         res.status(200).json({
             success:true,
+            message:"Successfully Fetched All Users",
             users
         })
-        console.log(users);
     }
     catch(error){
         next(error);
@@ -69,7 +70,8 @@ exports.updateUser = async (req,res,next) => {
         }
         res.status(200).json({
             success:true,
-            user:updateuser
+            message:"Updated User Successfully ",
+            user:updateUser
         });
     }
     catch(error){

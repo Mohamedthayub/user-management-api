@@ -15,12 +15,12 @@ const userSchema = new  mongoose.Schema({
         lowercase:true,
         trim:true
     },
-    age:{
-        type:Number,
-        required:[true,"Age is required"],
-        min:[10,"Age must be  at least 10"],
-        max:[120,"Age must be less than or equal to 120"]
-    },
+    password:{
+        type:String,
+        required:[true,"password is required"],
+        minLength:10,
+        maxLength:30
+    }
 },
 {
     timestamps:true
